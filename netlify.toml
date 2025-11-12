@@ -1,11 +1,9 @@
 [[headers]]
-  # 这条规则确保所有目录下的 .ts 文件都被当作 JavaScript 文件处理
-  for = "/**/*.ts"
+  for = "/*.ts"
   [headers.values]
     Content-Type = "application/javascript"
 
 [[headers]]
-  # 这条规则确保所有目录下的 .tsx 文件都被当作 JavaScript 文件处理
-  for = "/**/*.tsx"
+  for = "/*.tsx"
   [headers.values]
     Content-Type = "application/javascript"
