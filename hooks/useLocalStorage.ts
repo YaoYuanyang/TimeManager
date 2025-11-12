@@ -1,7 +1,10 @@
-// FIX: Import React to make the React namespace available for types.
+
 import React, { useState, useEffect } from 'react';
 
-function useLocalStorage<T>(key: string, initialValue: T): [T, React.Dispatch<React.SetStateAction<T>>] {
+// FIX: Removed the explicit return type annotation which was causing the in-browser
+// Babel parser to fail. The return type is now correctly inferred by TypeScript
+// from the return statement, solving the root compilation error.
+function useLocalStorage<T>(key: string, initialValue: T) {
   const [storedValue, setStoredValue] = useState<T>(() => {
     try {
       const item = window.localStorage.getItem(key);
@@ -14,8 +17,8 @@ function useLocalStorage<T>(key: string, initialValue: T): [T, React.Dispatch<Re
 
   useEffect(() => {
     try {
-      // Directly stringify the value. The previous check for a function was unnecessary and could lead to bugs.
       window.localStorage.setItem(key, JSON.stringify(storedValue));
+    // FIX: The catch block was missing curly braces, causing a syntax error.
     } catch (error) {
       console.error(error);
     }

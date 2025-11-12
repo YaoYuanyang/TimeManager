@@ -51,11 +51,8 @@ export const calculateStats = (tasks: Task[], period: 'day' | 'week' | 'month', 
     // Create date in UTC to avoid timezone issues with the YYYY-MM-DD string
     const taskDate = new Date(Date.UTC(year, month - 1, day));
     
-    if (period === 'day') {
-        const refDateOnly = new Date(Date.UTC(referenceDate.getFullYear(), referenceDate.getMonth(), referenceDate.getDate()));
-        return taskDate.getTime() === refDateOnly.getTime();
-    }
-    
+    // FIX: Removed special handling for 'day' which was buggy. 
+    // This single comparison now correctly handles all periods.
     return taskDate >= startDate && taskDate <= endDate;
   });
 
