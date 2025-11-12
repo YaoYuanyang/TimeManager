@@ -1,0 +1,5 @@
+{
+  "name": "ChronoSync - Personal Time Manager",
+  "description": "A personal time management application that allows users to log tasks, categorize them with tags, and visualize their time allocation through daily, weekly, and monthly charts. All data is stored locally, with a manual sync option to transfer data between devices, ensuring privacy and no server costs.",
+  "requestFramePermissions": []
+}
