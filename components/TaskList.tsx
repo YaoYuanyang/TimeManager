@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Task, TagData } from '../types.ts';
 import { PencilSquareIcon, TrashIcon, ClockIcon, TagIcon, PlusIcon, PhotoIcon } from './Icons.tsx';
 import { getDuration } from '../utils/time.ts';
@@ -14,7 +14,7 @@ interface TaskListProps {
 }
 
 const TaskList: React.FC<TaskListProps> = ({ tasks, tags, selectedDate, onEdit, onDelete, onAddTask }) => {
-  const tagColorMap = new Map(tags.map(t => [t.name, t.color]));
+  const tagColorMap = useMemo(() => new Map(tags.map(t => [t.name, t.color])), [tags]);
 
   return (
     <div className="bg-bunker-900 rounded-xl shadow-lg p-6">

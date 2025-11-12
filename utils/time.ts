@@ -25,24 +25,26 @@ export const getDurationInMinutes = (startTime: string, endTime: string): number
 export const calculateStats = (tasks: Task[], period: 'day' | 'week' | 'month', referenceDate: Date): { name: string; value: number }[] => {
   let startDate: Date;
   let endDate: Date;
+  
+  const refYear = referenceDate.getUTCFullYear();
+  const refMonth = referenceDate.getUTCMonth();
+  const refDate = referenceDate.getUTCDate();
 
   if (period === 'day') {
-    // For 'day', the range isn't used in the filter, but let's set it for consistency.
-    startDate = new Date(referenceDate);
-    endDate = new Date(referenceDate);
+    startDate = new Date(Date.UTC(refYear, refMonth, refDate));
+    endDate = new Date(Date.UTC(refYear, refMonth, refDate));
   } else if (period === 'week') {
-    const dayOfWeek = referenceDate.getDay(); // Sunday - 0, Monday - 1, etc.
-    startDate = new Date(referenceDate.getFullYear(), referenceDate.getMonth(), referenceDate.getDate() - dayOfWeek);
-    // The end of the week is 6 days after the start.
-    endDate = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate() + 6);
+    const dayOfWeek = referenceDate.getUTCDay(); // Sunday - 0, Monday - 1, etc.
+    startDate = new Date(Date.UTC(refYear, refMonth, refDate - dayOfWeek));
+    endDate = new Date(Date.UTC(refYear, refMonth, refDate - dayOfWeek + 6));
   } else { // month
-    startDate = new Date(referenceDate.getFullYear(), referenceDate.getMonth(), 1);
-    // The end of the month is the 0th day of the next month.
-    endDate = new Date(referenceDate.getFullYear(), referenceDate.getMonth() + 1, 0);
+    startDate = new Date(Date.UTC(refYear, refMonth, 1));
+    endDate = new Date(Date.UTC(refYear, refMonth + 1, 0));
   }
   
-  startDate.setHours(0, 0, 0, 0);
-  endDate.setHours(23, 59, 59, 999);
+  // Set time to the very beginning and end of the day in UTC for accurate range comparison
+  startDate.setUTCHours(0, 0, 0, 0);
+  endDate.setUTCHours(23, 59, 59, 999);
 
   const relevantTasks = tasks.filter(task => {
     const [year, month, day] = task.date.split('-').map(Number);
@@ -50,7 +52,6 @@ export const calculateStats = (tasks: Task[], period: 'day' | 'week' | 'month', 
     const taskDate = new Date(Date.UTC(year, month - 1, day));
     
     if (period === 'day') {
-        // Compare just the date part, ignoring time
         const refDateOnly = new Date(Date.UTC(referenceDate.getFullYear(), referenceDate.getMonth(), referenceDate.getDate()));
         return taskDate.getTime() === refDateOnly.getTime();
     }
