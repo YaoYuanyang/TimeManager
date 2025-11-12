@@ -1,18 +1,35 @@
-
 import { GoogleGenAI } from "@google/genai";
 
-const API_KEY = process.env.API_KEY;
+// A function to safely get the API key.
+const getApiKey = (): string | undefined => {
+  try {
+    // Check if 'process' and 'process.env' are defined.
+    if (typeof process !== 'undefined' && process.env) {
+      return process.env.API_KEY;
+    }
+  } catch (e) {
+    // In a browser environment without a build step, 'process' is not defined.
+    console.warn("`process.env` is not available in this environment.");
+    return undefined;
+  }
+  return undefined;
+};
 
-if (!API_KEY) {
+const API_KEY = getApiKey();
+
+let ai: GoogleGenAI | null = null;
+
+if (API_KEY) {
+  ai = new GoogleGenAI({ apiKey: API_KEY });
+} else {
   console.warn("Gemini API key not found. Tag suggestion feature will be disabled.");
 }
 
-const ai = new GoogleGenAI({ apiKey: API_KEY! });
-
 const geminiService = {
   suggestTag: async (description: string, existingTags: string[]): Promise<string> => {
-     if (!API_KEY) {
-        throw new Error("API key is not configured.");
+     // Check if the AI client was initialized.
+     if (!ai) {
+        throw new Error("AI features are not configured. API key is missing.");
      }
     
     const model = 'gemini-2.5-flash';
