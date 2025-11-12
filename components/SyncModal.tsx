@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
-import { encryptData, decryptData } from '../utils/crypto';
-import { ClipboardDocumentIcon, ClipboardDocumentCheckIcon, XMarkIcon, KeyIcon } from './Icons';
+import { encryptData, decryptData } from '../utils/crypto.ts';
+import { ClipboardDocumentIcon, ClipboardDocumentCheckIcon, XMarkIcon, KeyIcon } from './Icons.tsx';
 
 interface SyncModalProps {
   onClose: () => void;

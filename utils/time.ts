@@ -1,4 +1,5 @@
-import { Task } from '../types';
+
+import { Task } from '../types.ts';
 
 export const getDuration = (startTime: string, endTime: string): string => {
   const start = new Date(`1970-01-01T${startTime}:00`);

@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
-import SyncModal from './SyncModal';
-import { LogoIcon, UserIcon, ArrowRightStartOnRectangleIcon, ArrowUpOnSquareIcon } from './Icons';
+import SyncModal from './SyncModal.tsx';
+import { LogoIcon, UserIcon, ArrowRightStartOnRectangleIcon, ArrowUpOnSquareIcon } from './Icons.tsx';
 
 interface HeaderProps {
   user: string;

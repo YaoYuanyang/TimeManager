@@ -1,8 +1,8 @@
 
 import React, { useMemo } from 'react';
-import { Task } from '../types';
-import { ChevronLeftIcon, ChevronRightIcon } from './Icons';
-import { getDurationInMinutes } from '../utils/time';
+import { Task } from '../types.ts';
+import { ChevronLeftIcon, ChevronRightIcon } from './Icons.tsx';
+import { getDurationInMinutes } from '../utils/time.ts';
 
 interface CalendarProps {
   selectedDate: Date;

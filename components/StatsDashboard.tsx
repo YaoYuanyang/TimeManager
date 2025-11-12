@@ -1,9 +1,9 @@
 
 import React, { useState, useMemo } from 'react';
-import { Task, TagData } from '../types';
-import { calculateStats } from '../utils/time';
+import { Task, TagData } from '../types.ts';
+import { calculateStats } from '../utils/time.ts';
 import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid } from 'recharts';
-import DailyTimeline from './DailyTimeline';
+import DailyTimeline from './DailyTimeline.tsx';
 
 type Period = 'day' | 'week' | 'month';
 

@@ -1,9 +1,9 @@
 
 import React, { useState, useEffect } from 'react';
-import { Task } from '../types';
-import geminiService from '../services/geminiService';
-import { resizeImage } from '../utils/image';
-import { SparklesIcon, PhotoIcon, XCircleIcon } from './Icons';
+import { Task } from '../types.ts';
+import geminiService from '../services/geminiService.ts';
+import { resizeImage } from '../utils/image.ts';
+import { SparklesIcon, PhotoIcon, XCircleIcon } from './Icons.tsx';
 
 interface TaskFormProps {
   onAddTask: (task: Omit<Task, 'id'>) => void;

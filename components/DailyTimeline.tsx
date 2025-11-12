@@ -1,6 +1,6 @@
 
 import React, { useMemo } from 'react';
-import { Task, TagData } from '../types';
+import { Task, TagData } from '../types.ts';
 
 interface DailyTimelineProps {
   tasks: Task[];

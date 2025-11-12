@@ -1,15 +1,15 @@
 
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
-import { Task, View, TagData } from './types';
-import useLocalStorage from './hooks/useLocalStorage';
-import LoginScreen from './components/LoginScreen';
-import Header from './components/Header';
-import Calendar from './components/Calendar';
-import TaskList from './components/TaskList';
-import StatsDashboard from './components/StatsDashboard';
-import { PlusCircleIcon, ChartPieIcon, CalendarIcon, XMarkIcon, WrenchScrewdriverIcon } from './components/Icons';
-import TaskForm from './components/TaskForm';
-import TagManagerModal from './components/TagManagerModal';
+import { Task, View, TagData } from './types.ts';
+import useLocalStorage from './hooks/useLocalStorage.ts';
+import LoginScreen from './components/LoginScreen.tsx';
+import Header from './components/Header.tsx';
+import Calendar from './components/Calendar.tsx';
+import TaskList from './components/TaskList.tsx';
+import StatsDashboard from './components/StatsDashboard.tsx';
+import { PlusCircleIcon, ChartPieIcon, CalendarIcon, XMarkIcon, WrenchScrewdriverIcon } from './components/Icons.tsx';
+import TaskForm from './components/TaskForm.tsx';
+import TagManagerModal from './components/TagManagerModal.tsx';
 
 const DEFAULT_COLORS = ['#0ea5e9', '#10b981', '#f97316', '#8b5cf6', '#ec4899', '#f59e0b', '#3b82f6', '#6366f1'];
 

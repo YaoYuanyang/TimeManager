@@ -1,8 +1,8 @@
 
 import React from 'react';
-import { Task, TagData } from '../types';
-import { PencilSquareIcon, TrashIcon, ClockIcon, TagIcon, PlusIcon, PhotoIcon } from './Icons';
-import { getDuration } from '../utils/time';
+import { Task, TagData } from '../types.ts';
+import { PencilSquareIcon, TrashIcon, ClockIcon, TagIcon, PlusIcon, PhotoIcon } from './Icons.tsx';
+import { getDuration } from '../utils/time.ts';
 
 interface TaskListProps {
   tasks: Task[];

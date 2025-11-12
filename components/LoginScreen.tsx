@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { LogoIcon } from './Icons';
+import { LogoIcon } from './Icons.tsx';
 
 interface LoginScreenProps {
   onLogin: (name: string) => void;

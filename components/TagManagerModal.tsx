@@ -1,7 +1,7 @@
 
 import React, { useState, useMemo } from 'react';
-import { Task, TagData } from '../types';
-import { XMarkIcon, PencilIcon, CheckIcon, TrashIcon } from './Icons';
+import { Task, TagData } from '../types.ts';
+import { XMarkIcon, PencilIcon, CheckIcon, TrashIcon } from './Icons.tsx';
 
 interface TagManagerModalProps {
   tasks: Task[];
