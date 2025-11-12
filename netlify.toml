@@ -1,19 +1,11 @@
 [[headers]]
-  # This rule ensures all .ts files, in any directory, are served as JavaScript.
+  # 这条规则确保所有目录下的 .ts 文件都被当作 JavaScript 文件处理
   for = "/**/*.ts"
   [headers.values]
     Content-Type = "application/javascript"
 
 [[headers]]
-  # This rule ensures all .tsx files, in any directory, are served as JavaScript.
+  # 这条规则确保所有目录下的 .tsx 文件都被当作 JavaScript 文件处理
   for = "/**/*.tsx"
   [headers.values]
     Content-Type = "application/javascript"
-
-[[headers]]
-  # These are important security headers that prevent certain browser errors
-  # and are required for features like the Web Crypto API to work reliably.
-  for = "/*"
-  [headers.values]
-    Cross-Origin-Opener-Policy = "same-origin"
-    Cross-Origin-Embedder-Policy = "require-corp"
